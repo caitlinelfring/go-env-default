@@ -1,6 +1,7 @@
 package env
 
 import (
+	"fmt"
 	"os"
 	"testing"
 	"time"
@@ -116,4 +117,66 @@ func TestGetDurationDefault(t *testing.T) {
 	os.Setenv(envVar, "notADuration")
 	val = GetDurationDefault(envVar, time.Hour)
 	assert.Equal(t, time.Hour, val)
+}
+
+func ExampleGetDefault() {
+	fmt.Println(GetDefault("MY_ENV_VAR", "default"))
+	os.Setenv("MY_ENV_VAR", "custom")
+	fmt.Println(GetDefault("MY_ENV_VAR", "default"))
+	os.Unsetenv("MY_ENV_VAR")
+
+	// Output:
+	// default
+	// custom
+}
+func ExampleGetBoolDefault() {
+	fmt.Println(GetBoolDefault("MY_ENV_VAR", true))
+	os.Setenv("MY_ENV_VAR", "false")
+	fmt.Println(GetBoolDefault("MY_ENV_VAR", true))
+	os.Unsetenv("MY_ENV_VAR")
+
+	// Output:
+	// true
+	// false
+}
+func ExampleGetIntDefault() {
+	fmt.Println(GetIntDefault("MY_ENV_VAR", 1))
+	os.Setenv("MY_ENV_VAR", "100")
+	fmt.Println(GetIntDefault("MY_ENV_VAR", 1))
+	os.Unsetenv("MY_ENV_VAR")
+
+	// Output:
+	// 1
+	// 100
+
+}
+func ExampleGetInt64Default() {
+	fmt.Println(GetInt64Default("MY_ENV_VAR", int64(12345678910)))
+	os.Setenv("MY_ENV_VAR", "100")
+	fmt.Println(GetInt64Default("MY_ENV_VAR", int64(12345678910)))
+	os.Unsetenv("MY_ENV_VAR")
+
+	// Output:
+	// 12345678910
+	// 100
+}
+func ExampleGetFloatDefault() {
+	fmt.Println(GetFloatDefault("MY_ENV_VAR", 3.14))
+	os.Setenv("MY_ENV_VAR", "34.02")
+	fmt.Println(GetFloatDefault("MY_ENV_VAR", 3.14))
+	os.Unsetenv("MY_ENV_VAR")
+
+	// Output:
+	// 3.14
+	// 34.02
+}
+func ExampleGetDurationDefault() {
+	fmt.Println(GetDurationDefault("MY_ENV_VAR", time.Hour))
+	os.Setenv("MY_ENV_VAR", "60s")
+	fmt.Println(GetDurationDefault("MY_ENV_VAR", time.Hour))
+	os.Unsetenv("MY_ENV_VAR")
+
+	// Output:
+	// 1h0m0s
+	// 1m0s
 }
