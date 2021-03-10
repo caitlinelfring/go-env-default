@@ -29,6 +29,12 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Run Unit tests
+        if: runner.os != 'Linux'
+        run: |
+          go test -race ./...
+
+      - name: Run Unit tests
+        if: runner.os == 'Linux'
         run: |
           go test -race -covermode=atomic -coverprofile=coverage.txt ./...
 
