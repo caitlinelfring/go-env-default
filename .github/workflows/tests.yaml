@@ -2,6 +2,8 @@ name: Go tests
 
 on:
   pull_request:
+  push:
+    branches: [main]
 
 jobs:
   test:
@@ -27,10 +29,20 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Run Unit tests
-        run: go test ./...
+        if: runner.os != 'Linux'
+        run: |
+          go test -race ./...
 
-      - name: Build
-        run: go build -v .
+      - name: Run Unit tests
+        if: runner.os == 'Linux'
+        run: |
+          go test -race -covermode=atomic -coverprofile=coverage.txt ./...
+
+      - name: Send to Codecov
+        if: runner.os == 'Linux'
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: bash <(curl -s https://codecov.io/bash)
 
   lint:
     name: Lint
