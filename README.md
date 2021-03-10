@@ -27,6 +27,8 @@ Supports the following types:
 Example:
 
 ```go
+package main
+
 import (
   "fmt"
 
