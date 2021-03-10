@@ -1,4 +1,4 @@
-module github.com/caitlinelfring/env
+module github.com/caitlinelfring/go-env-default
 
 go 1.15
 
