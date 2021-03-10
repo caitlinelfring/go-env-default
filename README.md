@@ -1,7 +1,7 @@
 # go-env-default
 
 <!-- [![Coverage Status](https://coveralls.io/repos/caitlinelfring/go-env-default/badge.svg?branch=develop&service=github)](https://coveralls.io/github/caitlinelfring/go-env-default?branch=master) -->
-[![GoDoc](https://godoc.org/github.com/caitlinelfring/go-env-default?status.svg)](https://godoc.org/github.com/caitlinelfring/go-env-default)
+[![Go Reference](https://pkg.go.dev/badge/github.com/caitlinelfring/go-env-default.svg)](https://pkg.go.dev/github.com/caitlinelfring/go-env-default)
 [![Go Report Card](https://goreportcard.com/badge/github.com/caitlinelfring/go-env-default)](https://goreportcard.com/report/github.com/caitlinelfring/go-env-default)
 
 ```go
@@ -28,7 +28,7 @@ Example:
 import (
   "fmt"
 
-  "github.com/caitlinelfring/go-env-default"
+  env "github.com/caitlinelfring/go-env-default"
 )
 
 func main() {
