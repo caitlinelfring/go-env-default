@@ -22,6 +22,11 @@ Supports the following types:
 * `float64`
 * `time.Duration`
 
+Supported Go versions:
+
+* 1.15
+* 1.16
+
 ## Usage
 
 Example:
