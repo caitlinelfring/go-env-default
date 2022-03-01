@@ -24,8 +24,9 @@ Supports the following types:
 
 Supported Go versions:
 
-* 1.15
+* 1.17
 * 1.16
+* 1.15
 
 ## Usage
 
