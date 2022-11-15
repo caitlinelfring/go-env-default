@@ -38,7 +38,7 @@ func GetIntDefault(envVar string, defaultValue int) int {
 // GetInt64Default returns the int64 value of the environment variable, or a default
 // value if the environment variable is not defined or is an empty string
 func GetInt64Default(envVar string, defaultValue int64) int64 {
-	val := GetDefault(envVar, strconv.FormatInt(defaultValue, 16))
+	val := GetDefault(envVar, strconv.FormatInt(defaultValue, 10))
 	if i, err := strconv.ParseInt(val, 10, 64); err == nil {
 		return i
 	}
